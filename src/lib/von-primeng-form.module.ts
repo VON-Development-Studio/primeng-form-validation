@@ -1,21 +1,24 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { VonPrimengFormValidateDirective } from './von-primeng-form-validate/von-primeng-form-validate.directive';
-import { VonPrimengFormValidationDirective } from './von-primeng-form-validation/von-primeng-form-validation.directive';
+import { MessageService } from 'primeng/api';
+import { VonPrimengValidationDirective } from './von-primeng-form-validation/von-primeng-validation.directive';
+import { VonPrimengValidateDirective } from './von-primeng-validate/von-primeng-validate.directive';
 
 @NgModule({
   declarations: [
-    VonPrimengFormValidateDirective,
-    VonPrimengFormValidationDirective
+    VonPrimengValidateDirective,
+    VonPrimengValidationDirective
   ],
   imports: [
     FormsModule
   ],
   exports: [
     FormsModule,
-    VonPrimengFormValidateDirective,
-    VonPrimengFormValidationDirective
+    VonPrimengValidateDirective,
+    VonPrimengValidationDirective
   ],
-  providers: []
+  providers: [
+    MessageService
+  ]
 })
 export class VonPrimengFormModule { }

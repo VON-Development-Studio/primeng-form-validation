@@ -1,6 +1,6 @@
 {
   "name": "@von-development-studio/primeng-form-validation",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Angular + PrimeNG Form Validation directives.",
   "repository": {
     "type": "git",
@@ -17,8 +17,7 @@
   "peerDependencies": {
     "@angular/common": "^11.0.3",
     "@angular/core": "^11.0.3",
-    "primeng": "^11.0.0",
-    "@von-development-studio/angular-form-validation": "^1.0.4"
+    "primeng": "^11.0.0"
   },
   "dependencies": {
     "tslib": "^2.0.0"

@@ -1,14 +1,17 @@
 import { Directive, ElementRef, EventEmitter, HostListener, Output } from '@angular/core';
-import { VonFormValidateDirective } from '@von-development-studio/angular-form-validation';
 
 @Directive({
   selector: '[validate]'
 })
-export class VonPrimengFormValidateDirective extends VonFormValidateDirective {
+export class VonPrimengValidateDirective {
 
-  constructor(protected el: ElementRef) {
-    super(el);
-  }
+  @Output('validate')
+  customSubmit: EventEmitter<any> = new EventEmitter();
+
+  protected isValid?: boolean;
+  protected isFocused?: boolean;
+
+  constructor(protected el: ElementRef) { }
 
   @HostListener('submit', ['$event'])
   onSubmitEvent = (e: any) => {
