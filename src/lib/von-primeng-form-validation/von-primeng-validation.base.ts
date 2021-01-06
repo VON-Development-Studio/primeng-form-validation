@@ -36,11 +36,16 @@ export abstract class VonPrimengValidationBase implements OnInit, Validator {
     this.messages = isValidationEn
       ? VALIDATION_MESSAGES.EN
       : VALIDATION_MESSAGES.ES;
+
     this.$label = $closestFormEl.querySelector(`label[for='${this.name}']`);
-    if (this.required && this.$label) {
-      this.$label.classList.add('field__label--required');
+    if (this.$label) {
+      this.renderer.addClass(this.$label, 'field__label');
+      if (this.required) {
+        this.renderer.addClass(this.$label, 'field__label--required');
+      }
     }
-    this.element.nativeElement.setAttribute('validation', true);
+    this.renderer.setAttribute(this.element.nativeElement, 'validation', 'true');
+    this.renderer.addClass(this.element.nativeElement, this.verifyClassName(this.element.nativeElement));
   }
 
   validate(formValue: FormControl): ValidationErrors {
@@ -98,6 +103,15 @@ export abstract class VonPrimengValidationBase implements OnInit, Validator {
       return;
     }
     this.renderer.removeClass(this.element.nativeElement, 'field__error');
+  }
+
+  protected verifyClassName = (element: HTMLElement): string => {
+    switch (element.tagName) {
+      case 'INPUT': return 'field__input';
+      case 'TEXTAREA': return 'field__textarea';
+      case 'P-DROPDOWN': return 'field__dropdown';
+    }
+    return 'field__no-defined';
   }
 
 }
